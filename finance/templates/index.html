@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+      <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                {% for stock in storages %}
+                <tr>
+                    <td><a href='quote.html?symbol=stock["symbol"]'>{{ stock["symbol"] }}</a></td>
+                    <td>{{ stock["name"] }}</td>
+                    <td>{{ stock["shares"] }}</td>
+                    <td>{{ stock["price"] }}</td>
+                    <td>{{ stock["total"] }}</td>
+                </tr>
+                {% endfor %}
+                <td colspan="4">CASH</td>
+                <td>{{ cash }}</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr class='table-success'>
+                <td colspan="4">GRAND TOTAL</td>
+                <td>{{ grand_total }}</td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+{% endblock %}

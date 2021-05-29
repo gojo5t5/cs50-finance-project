@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change password
+{% endblock %}
+
+{% block main %}
+    <form action="/account" method="post">
+        <div class="form-group">
+            <input id='old' onkeyup='validate()' autocomplete="off" autofocus class="form-control" name="old" placeholder="Old password" type="password">
+        </div>
+        <div class="form-group">
+            <input id='new' onkeyup='validate()' autocomplete="off" class="form-control" name="new" placeholder="New Password" type="password">
+        </div>
+        <div class="form-group">
+            <input id='confirm' onkeyup='validate()' autocomplete="off" class="form-control" name="confirm" placeholder="Confirm New Password" type="password">
+        </div>
+        <button id='submit' class="btn btn-primary" type="submit" disabled>Change Password</button>
+    </form>
+
+    <script>
+        function validate(){
+            old = document.querySelector('#old').value;
+            newp = document.querySelector('#new').value;
+            confirm = document.querySelector('#confirm').value;
+            if ((old === '') || ( newp === '') || (confirm === '')
+                ||(newp !== confirm)){
+                document.querySelector('#submit').disabled = true;
+            } else {
+                document.querySelector('#submit').disabled = false;
+            }
+        }
+    </script>
+
+{% endblock %}

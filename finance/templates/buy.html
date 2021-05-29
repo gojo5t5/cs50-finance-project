@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <form id='buy' action="/buy" method="post">
+        <div class="form-group">
+            <input id='symbol' onkeyup='validate()' autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Stock Symbol" type="text">
+        </div>
+        <div class="form-group">
+            <input id='shares' onkeyup='validate()' autocomplete='off' class="form-control" name="shares" placeholder="Shares (number input)" type="text">
+        </div>
+        <button id='submit' class="btn btn-primary" type="submit" disabled>Buy</button>
+    </form>
+
+    <script>
+        function validate(){
+            shares = document.querySelector('#shares').value;
+            symbol = document.querySelector('#symbol').value;
+            if ((symbol === '') || (shares === '')|| (isNaN(shares))|| (shares <= 0)){
+                document.querySelector('#submit').disabled = true;
+            } else {
+                document.querySelector('#submit').disabled = false;
+            };
+        }
+    </script>
+
+{% endblock %}

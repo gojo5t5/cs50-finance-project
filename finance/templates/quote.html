@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post">
+        <div class="form-group">
+            <input onkeyup='validate' id='quote'autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Search quote" type="text">
+        </div>
+        <button id='submit' class="btn btn-primary" type="submit">Search</button>
+    </form>
+    <script>
+        function validate(){
+            if (document.querySelector('#quote').value ===''){
+                document.querySelector('#submit').disabled = true;
+            } else{
+                document.querySelector('#submit').disabled = false;
+            }
+        }
+    </script>
+{% endblock %}
